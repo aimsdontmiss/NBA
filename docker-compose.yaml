@@ -1,0 +1,67 @@
+services:
+  django:
+    build: ./com.irlballers.api/src
+    working_dir: /app
+    volumes:
+      - ./com.irlballers.api/src:/app
+    ports:
+      - "8000:8000"
+    restart: always
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: nba_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ahmedkeisar
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    restart: always
+
+  angular:
+    build: ./com.irlballers.ui
+    working_dir: /ui
+    restart: always
+    volumes:
+      - ./com.irlballers.ui:/ui
+      - /ui/node_modules
+    ports:
+      - "4200:4200"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: always
+
+  celery:
+    build: ./com.irlballers.api/src
+    working_dir: /app
+    command: celery -A ./com.irlballers.api/src worker --loglevel=info
+    volumes:
+      - ./com.irlballers.api/src:/app
+    depends_on:
+      - postgres
+      - redis
+      - django
+    restart: always
+
+  celery-beat:
+    build: ./com.irlballers.api/src
+    working_dir: /app
+    command: celery -A ./com.irlballers.api/src beat --loglevel=info
+    restart: always
+    volumes:
+      - ./com.irlballers.api/src:/app
+    depends_on:
+      - postgres
+      - redis
+      - django
+
+
+volumes:
+  postgres_data:
+
+
