@@ -1,0 +1,42 @@
+<div class="team-detail-container">
+  <div class="team-detail__header">
+    <h2>Team Detail</h2>
+    <a routerLink="/teams"><-- Back to Teams</a>
+  </div>
+  <div class="team-detail">
+    <h1 class="team-detail__name">{{ team?.name }}</h1>
+    <p>{{ team?.id }} - {{ team?.abbr }}</p>
+    <img
+      [ngSrc]="'https://cdn.nba.com/logos/nba/' + team?.id + '/global/L/logo.svg'"
+      alt="{{ team?.name }}"
+      width="333"
+      height="333"
+      class="team-logo"
+    />
+
+    <div class="team-detail__roster">
+      <div class="roster_header_container">
+        <h2 class="roster_table_title">Roster</h2>
+        <p class="roster_table_subtit">Total Players: {{ roster?.length }}</p>
+      </div>
+
+      <table class="roster_table">
+        <tr class="bg-red-500">
+          <th>Name</th>
+          <th>Position</th>
+          <th>Jersey</th>
+        </tr>
+        @for (player of roster; track player.id) {
+          <tr>
+            <td><a routerLink="/players/{{ player.id }}">{{ player.name }}</a></td>
+            <td>{{ player.position }}</td>
+            <td>{{ player.jersey }}</td>
+          </tr>
+        }
+      </table>
+    </div>
+
+  </div>
+</div>
+
+

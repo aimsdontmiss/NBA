@@ -1,0 +1,26 @@
+<div class="flex flex-col items-center">
+  <h1 class="text-2xl font-bold my-4">Teams</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    @for (team of teams; track team.id) {
+      <div class="border-2 min-w-[250px] min-h-[250px] border-black rounded-lg p-4 m-2 text-center">
+        <a class="" [routerLink]="['/teams', team.id]">
+          <h2>{{ team.name }}</h2>
+          <img
+            [ngSrc]="'https://cdn.nba.com/logos/nba/' + team?.id + '/global/L/logo.svg'"
+            alt="{{ team?.name }}"
+            width="150"
+            height="150"
+            class="flex m-auto justify-center"
+          />
+          <p>{{ team.id }} - {{ team.abbr }}</p>
+        </a>
+
+      </div>
+    } @empty {
+      <p>No teams found.</p>
+    }
+  </div>
+
+</div>
+
+

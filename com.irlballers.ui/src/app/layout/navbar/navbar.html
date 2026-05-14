@@ -1,0 +1,39 @@
+<nav class="flex bg-green-300 justify-center">
+
+  <div class="flex items-center justify-between w-full max-w-6xl gap-4 mx-auto p-4">
+
+    <!--  right side of navbar   -->
+    <div class="flex gap-4 items-center ml-2">
+      <a routerLink="teams">
+        <img ngSrc='logo.png'
+             height="42"
+             width="42"
+             alt="NBA Logo"
+             class="">
+      </a>
+      <a routerLink="teams"><h3>IRLballers</h3></a>
+      <input type="text"
+             placeholder="Search here..."
+             class="rounded-md bg-white border border-gray-300 sm:w-fit px-4 py-2 w-full">
+    </div>
+
+    <!--  left side of navbar   -->
+    <ul class="visible flex gap-4 md:mr-2 max-sm:hidden">
+      <li><a routerLink="teams">Teams</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+    <!--  hamburger menu  -->
+    <div  class="visible sm:hidden mr-2">
+      <a href="#" class="">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="42" height="42" viewBox="0 0 50 50">
+          <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
+        </svg>
+      </a>
+
+    </div>
+
+  </div>
+</nav>
+

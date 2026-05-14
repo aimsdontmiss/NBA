@@ -1,0 +1,40 @@
+
+<div class="container">
+  <div class="player-detail-header">
+    <h2>Player Detail</h2>
+    <a routerLink="/teams/{{ player?.team?.id }}"><-- Back to Roster</a>
+  </div>
+
+  <div class="player-detail">
+    <h1>{{ player?.name }}</h1>
+    <span>{{ player?.position }} | {{ player?.team?.abbr }} | #{{ player?.jersey }}</span>
+
+    <img
+      [src]="'https://cdn.nba.com/headshots/nba/latest/1040x760/' + player?.id + '.png'"
+      height="400"
+      width="500"
+      alt="{{ player?.name }}"
+      class="player-img"
+    />
+
+
+
+    <div class="flex flex-row bg-emerald-300 p-4">
+      <div class="player-stats">
+        <p>Country: {{ player?.country }}</p>
+        <p>School: {{ player?.school }}</p>
+        <p>DOB: {{ player?.birthdate }}</p>
+        <p>Height: {{ player?.height }}</p>
+        <p>Weight: {{ player?.weight }}</p>
+      </div>
+
+      <div class="player-stats">
+        <p>PPG: {{ stats?.ppg }}</p>
+        <p>RPG: {{ stats?.rpg }}</p>
+        <p>APG: {{ stats?.apg }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
